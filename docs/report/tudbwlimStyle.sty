@@ -1,0 +1,80 @@
+%############ Layout ###############
+
+%\setstretch{1.1}
+%\recalctypearea
+
+%% bwlim_refreshed
+%%%\TUDoptions{cdgeometry=symmetric}%asymmetric,adapted,calculated,no
+%\RequirePackage[autooneside=false,markcase=used]{scrlayer-scrpage} 
+%\automark[section]{chapter}
+%\cfoot[\pagemark]{}
+%\rofoot[]{{\footnotesize \headmark} \quad \pagemark} % \itshape
+%%% bwlim_old (für Erscheinungsbild der Kolumnentitel wie in der alten bwlim-Vorlage)
+%%%\TUDoptions{cdgeometry=symmetric}
+%%%\geometry{left=28mm,right=24mm,top=36mm,bottom=24mm,}%showframe,footskip=12mm,
+\KOMAoptions{headinclude=true}
+\RequirePackage[autooneside=false,headsepline]{scrlayer-scrpage}%,markcase=upper
+\ihead{\headmark}
+\ohead[]{\pagemark}
+\chead{}
+\cfoot[\pagemark]{}
+\rofoot[]{}
+\setkomafont{pagehead}{\normalfont\normalcolor\slshape}%\slshape
+
+%############### Einstellungen ###############
+
+% Sprachabhängige Bezeichner
+% english
+%\providecaptionname{english}{\listalgorithmname}{List of Algorithms}
+\providecaptionname{english}{\listsymbolname}{List of Symbols}
+\renewcaptionname{english}{\contentsname}{Table of Contents}
+\providecaptionname{english}{\confirmationname}{Statement of Authorship}
+\renewcaptionname{english}{\confirmationname}{Statement of Authorship}
+% Wird mit \tableofcontents das Inhaltsverzeichnis für ein Dokument mit einer dreistelligen Seitenanzahl erstellt, so erscheinen unter Umständen viele Warnungen mit der Meldung:
+%overfull \hbox
+%Die Seitenzahlen im Verzeichnis werden in einer Box mit einer festen Breite von 1.55em gesetzt, welche im Makro \@pnumwidth hinterlegt ist und im Zweifel vergrößert werden sollte. Dabei ist auch der rechte Rand für mehrzeilige Einträge im Verzeichnis \@tocrmarg zu vergrößern, welcher mit 2.55em voreingestellt ist. Die Werte sollten nur minimal geändert werden:
+\makeatletter
+\renewcommand*{\@pnumwidth}{1.85em}\renewcommand*{\@tocrmarg}{2.7em}
+\makeatother
+
+% ngerman
+%\providecaptionname{ngerman,german}{\listalgorithmname}{Algorithmenverzeichnis}
+\providecaptionname{ngerman,german}{\listsymbolname}{Symbolverzeichnis}
+
+% Voreinstellungen Deckblatt
+\faculty{Fakult{\"a}t Wirtschaftswissenschaften}
+%\chair{{\scriptsize \sffamily \univrn Lehrstuhl f{\"u}r BWL, insbes. Industrielles Management, Prof. Dr. Udo Buscher}}
+\chair{Lehrstuhl f{\"u}r BWL, insbes. Industrielles Management, Prof. Dr. Udo Buscher}
+
+% Danksagung
+\newcommand{\danke}[2]{\chapter*{#1}\thispagestyle{empty}#2}
+\newcommand{\seminarCategory}[1]{#1}
+\newcommand{\seminarCategoryText}{Im Rahmen des Seminars}
+
+% Selbstständigkeitserklärung Deutsch
+\newcommand{\newConfirmationGerman}[1]{\chapter*{Selbstst\"andigkeitserkl\"arung}\thispagestyle{empty} Ich erkl\"are hiermit ehrenw\"ortlich, dass ich die vorliegende Arbeit selbstst\"andig und ohne Benutzung anderer als der angegebenen Hilfsmittel angefertigt habe. Die aus fremden Quellen direkt oder indirekt \"ubernommenen Gedanken sind als solche kenntlich gemacht. Die Arbeit wurde bisher in gleicher oder \"ahnlicher Form keiner anderen Pr\"ufungsbeh\"orde vorgelegt und noch nicht ver\"offentlicht. Ich bin mir bewusst, dass eine unwahre Erklärung rechtliche Folgen haben wird.
+
+\vspace{0.5cm}
+\noindent Ich erkl\"are mich damit einverstanden, dass die Arbeit mit Hilfe eines Plagiatserkennungsdienstes auf enthaltene Plagiate untersucht wird.
+
+\vspace{0.5cm}
+\noindent #1, den \today
+}
+
+% Selbstständigkeitserklärung Englisch
+\newcommand{\newConfirmationEnglish}[1]{\chapter*{Statement of authorship}\thispagestyle{empty} I hereby certify that I have authored this document independently and without using other than the indicated assistance. The thoughts taken directly or indirectly from external sources are marked as such. The work has not been submitted in the same or a similar form to any other examination authority and has not yet been published. I am aware that an untruthful statement will have legal consequences.
+
+\vspace{0.5cm}
+\noindent I agree that the work will be examined for contained plagiarism with the help of a plagiarism detection service.
+
+\vspace{0.5cm}
+\noindent #1, on \today
+}
+
+% Erstellen des Befehls für das Symbolverzeichnis
+%\newcommand{\listsymbolname}{Symbolverzeichnis}
+%\newcommand{\listofsymbols}{%
+%	\chapter*{\listsymbolname
+%		\@mkboth{%
+%			\MakeUppercase\listsymbolname}{\MakeUppercase\listsymbolname}}%
+%}

@@ -1,0 +1,8 @@
+{
+  "max_bins": 507,
+  "max_interaction_bins": 43,
+  "interactions": 8,
+  "learning_rate": 0.0050645028870541595,
+  "min_samples_leaf": 15,
+  "max_rounds": 3943
+}

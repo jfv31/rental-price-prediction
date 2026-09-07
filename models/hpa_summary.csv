@@ -1,0 +1,5 @@
+Modell,Target,MAE (CV),Trials
+Ridge,log_laufzeittage,0.9223,196
+IGANN,log_laufzeittage,1000000000.0,2
+Ridge,mietepro_m2,1.7536,188
+IGANN,mietepro_m2,1000000000.0,2

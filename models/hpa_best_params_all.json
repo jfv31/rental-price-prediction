@@ -1,0 +1,26 @@
+{
+  "IGANN": {
+    "mietepro_m2": {
+      "n_hid": 256,
+      "n_estimators": 3000,
+      "boost_rate": 0.1,
+      "elm_scale": 1.0,
+      "elm_alpha": 0.001
+    },
+    "log_laufzeittage": {
+      "n_hid": 256,
+      "n_estimators": 3000,
+      "boost_rate": 0.1,
+      "elm_scale": 1.0,
+      "elm_alpha": 0.001
+    }
+  },
+  "Ridge": {
+    "mietepro_m2": {
+      "alpha": 77.33671400780759
+    },
+    "log_laufzeittage": {
+      "alpha": 9992.186615699478
+    }
+  }
+}

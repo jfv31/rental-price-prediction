@@ -1,0 +1,53 @@
+% vgl. https://ftp.agdsn.de/pub/mirrors/latex/dante/macros/latex/contrib/tudscr/doc/tutorials/treatise.pdf Seite 5
+% https://tex.stackexchange.com/questions/2984/frequently-loaded-packages-differences-between-pdflatex-and-xelatex
+\RequirePackage{iftex}
+\ifxetex
+    \RequirePackage{fontspec}
+    \defaultfontfeatures{Ligatures=TeX}
+\else
+    \RequirePackage{selinput}\SelectInputMappings{adieresis={ä},germandbls={ß}}
+    \RequirePackage[T1]{fontenc}
+    \RequirePackage{hyphsubst} %[ngerman=ngerman-x-latest]
+\fi
+
+\RequirePackage{lmodern}
+\RequirePackage{babel}
+\RequirePackage{amsmath,amssymb,amstext,algpseudocode,longtable,booktabs,epsfig,setspace,url,quoting,xspace,textcomp} % mynormal,ragged2e
+
+%############### Microtype Setup ############### (Sollte nur mit PdfLatex verwendet werden)
+%\ifpdf
+%	\RequirePackage[babel,activate={true,nocompatibility},tracking=true,kerning=true,spacing=true,factor=1100,stretch=20,shrink=20]{microtype}
+%\else
+%	\RequirePackage[babel,kerning=true,spacing=true,factor=1100,stretch=20,shrink=20]{microtype}
+%\fi
+
+%\SetProtrusion{encoding={*},family={*},series={*},size={6,7}}
+%{1={ ,750},2={ ,500},3={ ,500},4={ ,500},5={ ,500},
+%	6={ ,500},7={ ,600},8={ ,500},9={ ,500},0={ ,500}}
+%\SetExtraKerning[unit=space]
+%{encoding={*}, family={*}, series={*}, size={footnotesize,small,normalsize}}
+%{\textendash={400,400}, % en-dash, add more space around it
+%	"28={ ,100}, % left bracket, add space from right
+%	"29={100, }, % right bracket, add space from left
+%	%\textquotedblleft={ ,150}, % left quotation mark, space from right
+%	%\textquotedblright={150, } % right quotation mark, space from left
+%}
+%\SetTracking{encoding={*}, shape=sc}{40}
+
+%###############################################
+\RequirePackage[labelfont=bf]{caption}
+%\RequirePackage{tudscrsupervisor}
+\RequirePackage{xfrac}
+\RequirePackage{isodate}
+\RequirePackage{fnpct}
+\RequirePackage{siunitx}
+\RequirePackage{enumitem}
+	\setlist[itemize]{noitemsep}
+\RequirePackage[xspace]{ellipsis}
+	\let\ellipsispunctuation\relax
+	\newcommand*\qdots{[\dots{}]\xspace}
+
+%############### BibLaTeX Setup ###############
+\RequirePackage{csquotes}
+
+%###############################################

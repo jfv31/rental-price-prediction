@@ -1,0 +1,19 @@
+# GADA Wohnungsmietmarkt — Python-Abhängigkeiten
+# Getestet mit Python 3.11
+# Hinweis: numpy muss <2.0 bleiben wegen interpret/EBM-Kompatibilität
+
+numpy==1.26.4
+pandas>=3.0.0
+scikit-learn>=1.8.0
+xgboost>=3.0.0
+lightgbm>=4.0.0
+igann
+interpret==0.6.9
+optuna>=4.0.0
+joblib
+pyarrow>=14.0.0
+streamlit>=1.30.0
+plotly>=5.0.0
+shap
+undetected-chromedriver
+beautifulsoup4
