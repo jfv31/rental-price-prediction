@@ -1,0 +1,109 @@
+Generierung dupID_gen
+=====================
+
+Diese Variable gibt an, wie sich ein Spell innerhalb einer ObjektID zum vorherigen Spell verhält. Sie ist wie folgt definiert:
+
+0: ObjektID nur einmal oder 1. Spell von ObjektID
+1: Gehört wahrscheinlich zusammen, z.B. Unterbrechung durch Lieferung ans RWI oder leichte Anpassung des Inserats
+2: Wie (1), aber Lücke zwischen Inseraten >6 Monate, d.h. es könnte auch eine Neuvermietung der Wohnung sein
+3: Inserate zeitlich nah beieinander (<= 6 Monate), allerdings Unterscheidung in wichtigen Variablen
+4: Wie (3), aber Lücke zwischen Inseraten >6 Monate
+5: Deutliche Unterschiede in wichtigen Variablen, deshalb bestehen Zweifel, dass es sich um das gleiche Objekt handelt.
+
+Zur Generierung wird das ado-File GenDupID verwendet, das auch vom Datenendnutzer verändert werden kann um die Definitionen anzupassen.
+
+---------------
+Voraussetzungen
+---------------
+
+Folgende Voraussetzungen müssen erfüllt sein, sodass das ado-File richtig läuft:
+
+1. Missings von numerischen Variablen, die in der Definition von ähnlichen Wohnungen verwendet werden, müssen als missing in Stata codiert sein (nicht als Negativwerte). 
+
+Alternativ gibt es die Möglcihkeit, dem Programm in der Option negmissings(varlist) eine Variablenliste von Variablen, die entsprechend umcodiert werden müssen, zu übergeben. In diesem Fall und falls Typ 5 berechnet wird, werden negative Werte der unter 3. aufgelisteten Variablen ebenfalls zu Missings ersetzt.
+
+2. Es braucht Variablen für das Anfangs- und Enddatum eines Spells, die als Datumsformat auf monatlicher Ebene formatiert sind.
+z.B. gen adat=ym(ajahr, amonat)
+
+3. Sollte Typ 5 vom Programm berechnet werden sollen, müssen folgende Variablen existieren: 
+- kaufpreis,
+- mietekalt,
+- mietewarm,
+- wohnflaeche,
+- grundstuecksflaeche,
+- zimmeranzahl. 
+
+Alternativ kann die Klassifizierung von Typ 5 auch manuell nach Durchlauf des Programms geschehen, wie unter Eingaben/optional beschrieben.
+
+--------
+Eingaben
+--------
+
+Folgende Syntax muss eingehalten werden:
+
+GenDupID varname, gen(string) duplist1(varlist) adat(varname numeric) edat(varname numeric)
+
+wobei
+- varname die ObjektID bezeichnet,
+- gen der Name der zu generienden Klassifikation ist (z.B. dupID_gen),
+- duplist1 eine Liste von existierenden Variablen, die für die Charakterisierung von ähnlichen Spells verwendet wird (Typ 1 und Typ 2)
+- adat und edat das Anfangs- und Enddatum des Spells bezeichnen, wie oben beschrieben.
+
+optional
+********
+
+Optional können folgende Parameter übergeben werden:
+- duplist2() und duplist3(), die wie duplist1() definiert sind. Ein Spell wird dann als Typ 1 oder 2 klassifiziert, wenn eine der Definitionen zutrifft (ODER-Verknüpfung).
+
+- notypefive: Wenn der Datennutzer Typ 5 lieber selbst bestimmen will, werden diese Spells anhand der Lücke zum Vorspell als Typ 3 oder Typ 4 definiert. Typ 5 kann dann einfach nach Durchlauf des Programms manuell angepasst werden. 
+
+Die Beschreibung der Default-Klassifizierung erfolgt unter Defaults.
+
+- months(integer): Der Default-Wert ist 6 Monate, d.h. die Lücken, die zur Unterscheidung von Typ 1 und Typ 2 bzw. Typ 3 und Typ 4 respektive verwendet werden, sind mehr als 6 Monate. Hier kann beliebiger Integerwert eingeben werden.
+
+- nosum: Das Programm gibt kleinere deskriptive Statistiken beim Durchlaufen aus. Sollte dies nicht gewünscht sein, kann dies mit dieser Option abgestellt werden.
+
+--------
+Defaults
+--------
+
+Monate
+******
+Für die Unterscheidung von Typ 1 und Typ 2 bzw. Typ 3 und Typ 4 ist ein Defaultwert von >6 Monate gegeben.
+
+Typ 5 
+*****
+Ein Spell wird als Typ 5 klassifiziert, wenn eine der untenstehenden Bedingungen erfüllt ist (ODER-Verküpfung):
+- Kaufpreis weicht um mehr als 20% ab,
+- Warm- oder Kaltmiete weicht um mehr als 20% ab,
+- Wohnfläche weicht um mehr als 10% ab,
+- Grundstücksfläche weicht um mehr als 10% ab,
+- Zimmeranzahl weicht um mehr als 1 ab.
+
+Typ 1/2 
+*******
+Zur Bestimmung von "ähnlichen" Wohnungen werden die folgenden drei Definitionen verwendet:
+
+* Def 1: Generell sehr gleiche Features
+mietekalt mietewarm heizkosten_in_wm_enthalten /// nur Miete
+kaufpreis grundstuecksflaeche /// nur Kauf
+etage /// nur Wohnung
+baujahr letzte_modernisierung wohnflaeche anzahletagen zimmeranzahl ///
+schlafzimmer badezimmer energieeffizienzklasse ausstattung
+
+* Def 2: Ohne Manipulation
+Hier berechnen wir dup ohne Manipulationsvariablen, z.B. Miete, wenn Wohnung
+länger nicht vermietet. Beachte, dass wir die Manipulation einer PLZ nicht zulassen,
+auch wenn das plausibel ist. Das ist aber in dup1 zulässig.
+Folgende Variablen sind enthalten:
+plz ///
+grundstuecksflaeche /// nur Kauf
+etage /// nur Wohnung
+baujahr wohnflaeche anzahletagen zimmeranzahl ///
+schlafzimmer badezimmer
+
+
+
+
+
+

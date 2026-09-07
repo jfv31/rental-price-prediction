@@ -1,0 +1,86 @@
+[
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "@id": "#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Wohnung mieten",
+            "item": "https://www.immobilienscout24.de/wohnen/mietwohnungen.html"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sachsen",
+            "item": "https://www.immobilienscout24.de/Suche/de/sachsen/wohnung-mieten"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Dresden",
+            "item": "https://www.immobilienscout24.de/Suche/de/sachsen/dresden/wohnung-mieten"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Neustadt",
+            "item": "https://www.immobilienscout24.de/Suche/de/sachsen/dresden/neustadt/wohnung-mieten"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Innere Neustadt",
+            "item": "https://www.immobilienscout24.de/Suche/de/sachsen/dresden/neustadt/innere-neustadt/wohnung-mieten"
+          }
+        ]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://www.immobilienscout24.de/expose/144472913",
+        "name": "1-Zimmer Wohnung 449 € zur Miete Innere Neustadt, Dresden",
+        "url": "https://www.immobilienscout24.de/expose/144472913",
+        "description": "Mietwohnung (Wohnung/Miete): 1 Zimmer - 19 qm - Holzhofgasse 1, 01099 Dresden, Innere Neustadt bei ImmobilienScout24 (Scout-ID: 144472913)",
+        "breadcrumb": {
+          "@id": "#breadcrumb"
+        },
+        "mainEntity": {
+          "@id": "#realEstateListing"
+        }
+      },
+      {
+        "@type": "RealEstateListing",
+        "@id": "#realEstateListing",
+        "name": "Home & Co – Easy Living | Möbliertes All-Inclusive Wohnen",
+        "url": "https://www.immobilienscout24.de/expose/144472913",
+        "image": {
+          "@type": "ImageObject",
+          "url": "https://pictures.immobilienscout24.de/listings/6b89d5f7-b961-4b41-aae2-3c44fcd80d5b-1638572085.jpg/ORIG/legacy_thumbnail/120x90/format/webp/quality/73"
+        },
+        "datePosted": "16-05-2025",
+        "offers": {
+          "@type": "Offer",
+          "price": "449",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Holzhofgasse 1",
+          "addressLocality": "Dresden",
+          "postalCode": "01099",
+          "addressCountry": "Deutschland"
+        },
+        "provider": {
+          "@type": "RealEstateAgent",
+          "name": "Home & Co Management GmbH",
+          "url": "https://www.homeand.co/location/dresden-south1",
+          "logo": "https://pictures.immobilienscout24.de/usercontent/5c350c64-0730-4419-bd39-9d956265f1b7.PNG/ORIG/resize/150x150%3E/quality/73"
+        }
+      }
+    ]
+  }
+]

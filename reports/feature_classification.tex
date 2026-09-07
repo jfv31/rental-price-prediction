@@ -1,0 +1,44 @@
+\begin{table}
+\caption{Cross-target classification of all features.}
+\label{tab:classification}
+\begin{tabular}{lll}
+\toprule
+ & cross_method & cross_target & notes \\
+feature &  &  &  \\
+\midrule
+ajahr & agree & opposing & Reflects tightening rental market 2007–2025; rising prices coincide with shorter listing durations. \\
+alter_bauwerk & agree & concordant & U-shape both targets; Neubau and Altbau segments show both price premium and longer listing duration, consistent with niche market segments. \\
+amonat & partial & concordant (weak) & weak positive effect both targets; EBM unreliable beyond 15 floors (sparse bins) \\
+anzahletagen & — & — & — \\
+aufzug & agree & concordant & Elevator increases price and marginally increases listing duration; duration effect near negligible. \\
+badezimmer & partial & inconclusive & clear, agreeing price effect; duration effect differs (EBM shows weak non-monotonic structure, XGBoost shows none) \\
+balkon & agree & opposing & balcony increases price and decreases listing duration \\
+blid & partial & opposing & nominal feature, curve interpretation limited; clear effects for single states \\
+completeness_score & agree & opposing & counterintuitive: higher listing quality associates with lower price, longer duration \\
+dens_supermarket & partial & opposing & agreement in core range (0–25); unstable in sparse tail (>25) \\
+dens_transit & partial & opposing & Higher transit-stop density associates with lower price and longer duration — counterintuitive; possibly confounded with location type (dense transit corridors ≠ desirable residential microlocation) \\
+dist_supermarket & agree & opposing & Clean, intuitive proximity effect: closer supermarket access commands price premium and shorter time-on-market. \\
+dist_to_center & agree & opposing & Both center and periphery command price premiums with shorter duration; suburban mid-range is least desirable. \\
+dist_transit & partial & opposing & erratic on both methods, weak signal overall \\
+einbaukueche & agree & opposing & price premium and shorter duration \\
+erg_amd & disagree & inconclusive & unclear feature semantics; extreme values misaligned between methods \\
+etage & partial & inconclusive & Price effect agrees; Duration direction disputed between methods (EBM shows decreasing, XGBoost shows increasing trend). \\
+foerderung & agree & opposing & Subsidized units: lower price, longer time-on-market. \\
+freiab_monate & agree & concordant & Strong effect both targets; unusually large duration magnitude vs. other features. \\
+gaestewc & partial & concordant & Both effects positive but negligible in magnitude; likely low practical relevance. \\
+garten & agree & opposing & weak effect \\
+hat_energieausweis & agree & opposing & Counterintuitive direction: having an energy certificate associates with lower price and longer duration; magnitude small. \\
+hat_parkplatz & agree & concordant & Both effects positive but duration magnitude negligible; price effect modest. \\
+haustier_erlaubt &  &  &  \\
+heizungsart & disagree & inconclusive &  \\
+kategorie_Wohnung & disagree & inconclusive & Nominal categorical feature; shape interpretation not meaningful. \\
+keller & agree & opposing & Counterintuitive: cellar associates with lower price and longer duration. \\
+objektzustand & partial & mixed & Price/Duration same sign in core range; EBM duration spike at high categories, not confirmed by XGBoost; unreliable at range extremes. \\
+schlafzimmer & agree & concordant & Core range agrees both targets and models; tails sparse/unreliable \\
+wohnflaeche & agree & mixed & small apartments and large units both command price premium, while the mainstream mid-size segment sees falling prices with rising time-on-market. \\
+wurde_modernisiert & agree & opposing & Attractive amenity pattern like einbaukueche: price premium, shorter duration. \\
+zimmeranzahl & agree & concordant & both curves move together across most of the range; brief sign divergences \\
+
+\bottomrule
+\end{tabular}
+\end{table}
